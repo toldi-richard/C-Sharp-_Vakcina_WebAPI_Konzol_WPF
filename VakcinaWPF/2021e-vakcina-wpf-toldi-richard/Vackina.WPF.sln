@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32328.378
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Vakcina.WPF", "Vackina.WPF\Vakcina.WPF.csproj", "{119BCD12-AC68-46CA-AEFE-1E18BD2DB70C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{119BCD12-AC68-46CA-AEFE-1E18BD2DB70C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{119BCD12-AC68-46CA-AEFE-1E18BD2DB70C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{119BCD12-AC68-46CA-AEFE-1E18BD2DB70C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{119BCD12-AC68-46CA-AEFE-1E18BD2DB70C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AC1A4B30-C1DB-4C9A-88AF-6D9934580B29}
+	EndGlobalSection
+EndGlobal

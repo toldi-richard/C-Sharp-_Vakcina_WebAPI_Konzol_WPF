@@ -1,0 +1,130 @@
+{
+	"info": {
+		"_postman_id": "dfbb55d3-fbd8-41c8-9463-52bc3841233d",
+		"name": "Vakcina",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Darabszám",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localhost}}/oltasok/datum",
+					"host": [
+						"{{localhost}}"
+					],
+					"path": [
+						"oltasok",
+						"datum"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "2022-03-01",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Oltások",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{localhost}}/oltasok",
+					"host": [
+						"{{localhost}}"
+					],
+					"path": [
+						"oltasok"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OltásLétrehozás",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"taj_szam\": 123,\r\n    \"vakcina_id\" : 1,\r\n    \"orvos_id\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{localhost}}/oltasok",
+					"host": [
+						"{{localhost}}"
+					],
+					"path": [
+						"oltasok"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OltásVáltoztatás",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"taj_szam\": 16460464\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{localhost}}/oltasok",
+					"host": [
+						"{{localhost}}"
+					],
+					"path": [
+						"oltasok"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "localhost",
+			"value": "http://localhost:5000/api",
+			"type": "string"
+		}
+	]
+}

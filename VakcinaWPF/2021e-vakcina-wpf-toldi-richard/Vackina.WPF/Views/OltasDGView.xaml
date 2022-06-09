@@ -1,0 +1,85 @@
+﻿<UserControl x:Class="Vakcina.WPF.Views.OltasokDGView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Vakcina.WPF.Views"
+             xmlns:vm="clr-namespace:Vakcina.WPF.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             Background="White">
+    <UserControl.DataContext>
+        <vm:OltasViewModel />
+    </UserControl.DataContext>
+    <UserControl.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Margin" Value="2" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Width" Value="200" />
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Label FontSize="24" HorizontalAlignment="Center" Content="Oltások"/>
+
+        <Grid Grid.Row="1">
+            <StackPanel Grid.Column="0" Orientation="Horizontal">
+                <TextBlock Text="Összesen: "/>
+                <TextBlock Text="{Binding TotalItems}"/>
+                <TextBlock Text=", elem per oldal: "/>
+                <ComboBox Width="100" VerticalAlignment="Top"
+                          ItemsSource="{Binding IPPList}"
+                          SelectedItem="{Binding ItemsPerPage}">
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Right">
+                <!-- TODO: 02.c -->
+                <TextBox Text="{Binding SearchKey}"></TextBox>
+                <Button Command="{Binding LoadDataCmd}">Keresés</Button>
+            </StackPanel>
+        </Grid>
+        
+        <DataGrid Grid.Row="2" ColumnWidth="*" x:Name="dataGrid"
+                  ItemsSource="{Binding Oltasok, NotifyOnTargetUpdated=True}"   
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"     
+                  CanUserDeleteRows="False"
+                  IsReadOnly="True"              
+                  SelectionMode="Single"
+                  TargetUpdated="dataGrid_TargetUpdated"
+                  Sorting="dataGrid_Sorting">
+            <!-- TODO: 01, 03.c -->
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="TAJ szám" Binding="{Binding taj_szam, StringFormat='000000000'}"/>
+                <DataGridTextColumn Header="Vakcina" Binding="{Binding vakcina.megnevezes}" />
+                <DataGridTextColumn Header="Oltás szám" Binding="{Binding oltas_szam}" />
+                <DataGridTextColumn Header="Utolsó oltás dátum" Binding="{Binding datum_utolso, StringFormat='yyyy-MM-dd'}" />
+                <DataGridTextColumn Header="Orvos" Binding="{Binding orvos.megjelenitendo_nev}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Grid Grid.Row="3" Margin="5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <!-- TODO: 05 -->
+            <Button Content="&lt;&lt;" Grid.Column="0" Command="{Binding FirstPageCmd}"/>
+            <Button Content="&lt;" Grid.Column="1" Command="{Binding PreviousPageCmd}"/>
+            <TextBlock Text="{Binding CurrentPage}" Grid.Column="2" HorizontalAlignment="Center"/>
+            <Button Content=">" Grid.Column="3" Command="{Binding NextPageCmd}"/>
+            <Button Content=">>" Grid.Column="4" Command="{Binding LastPageCmd}"/>
+        </Grid>
+    </Grid>
+</UserControl>
