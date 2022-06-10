@@ -51,5 +51,10 @@ namespace Vakcina.WPF.Views
             viewModel.SortBy = e.Column.SortMemberPath;
             e.Handled = true;
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

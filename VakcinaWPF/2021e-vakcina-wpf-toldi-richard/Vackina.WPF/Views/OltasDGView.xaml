@@ -42,8 +42,8 @@
             </StackPanel>
             <StackPanel Grid.Column="3" Orientation="Horizontal" HorizontalAlignment="Right">
                 <!-- TODO: 02.c -->
-                <TextBox Text="{Binding SearchKey}"></TextBox>
-                <Button Command="{Binding LoadDataCmd}">Keresés</Button>
+                <TextBox Width="200" Text="{Binding SearchKey}"/>
+                <Button Command="{Binding LoadDataCmd}" Click="Button_Click">Keresés</Button>
             </StackPanel>
         </Grid>
         
@@ -60,7 +60,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="TAJ szám" Binding="{Binding taj_szam, StringFormat='000000000'}"/>
                 <DataGridTextColumn Header="Vakcina" Binding="{Binding vakcina.megnevezes}" />
-                <DataGridTextColumn Header="Oltás szám" Binding="{Binding oltas_szam}" />
+                <DataGridTextColumn Header="Oltás szám" Binding="{Binding oltas_szam }" />
                 <DataGridTextColumn Header="Utolsó oltás dátum" Binding="{Binding datum_utolso, StringFormat='yyyy-MM-dd'}" />
                 <DataGridTextColumn Header="Orvos" Binding="{Binding orvos.megjelenitendo_nev}" />
             </DataGrid.Columns>
@@ -76,9 +76,9 @@
             </Grid.ColumnDefinitions>
             <!-- TODO: 05 -->
             <Button Content="&lt;&lt;" Grid.Column="0" Command="{Binding FirstPageCmd}"/>
-            <Button Content="&lt;" Grid.Column="1" Command="{Binding PreviousPageCmd}"/>
+            <Button Content="&lt;" Grid.Column="1"  Command="{Binding PreviousPageCmd}"/>
             <TextBlock Text="{Binding CurrentPage}" Grid.Column="2" HorizontalAlignment="Center"/>
-            <Button Content=">" Grid.Column="3" Command="{Binding NextPageCmd}"/>
+            <Button Content=">" Grid.Column="3" Command="{Binding NextPageCmd}" />
             <Button Content=">>" Grid.Column="4" Command="{Binding LastPageCmd}"/>
         </Grid>
     </Grid>

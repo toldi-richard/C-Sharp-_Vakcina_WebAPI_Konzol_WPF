@@ -97,21 +97,15 @@ namespace Vakcina.WPF.ViewModels
         protected void PrevPage()
         {
             // TODO: 04.b Előző oldal
-            if (page != 1)
-            {
-                page--;
-                LoadData();
-            }
+            page--;
+            LoadData();
         }
 
         protected void NextPage()
         {
             // TODO: 04.c Következő oldal
-            if (page != pageCount)
-            {
-                page++;
-                LoadData();
-            }
+            page++;
+            LoadData();
         }
 
         protected void LastPage()

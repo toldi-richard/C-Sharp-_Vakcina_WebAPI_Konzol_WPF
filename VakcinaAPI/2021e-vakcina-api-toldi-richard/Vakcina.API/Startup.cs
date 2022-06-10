@@ -26,11 +26,13 @@ namespace Vakcina.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddControllers();
             // TODO: 02. A kapcsolati adatokat az appsettings.json fájlból olvassa be
             services.AddDbContext<VakcinaContext>(
                 o => o.UseMySql(Configuration.GetConnectionString("VakcinaDB"),
-                ServerVersion.Parse("10.4.21-mariadb")));
+                ServerVersion.Parse("10.4.21-mariadb"))
+                );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

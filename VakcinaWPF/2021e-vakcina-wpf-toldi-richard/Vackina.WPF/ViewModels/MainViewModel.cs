@@ -3,6 +3,7 @@ using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Input;
 using System.Windows;
 using Vakcina.WPF.Repositories;
+using Vakcina.WPF.Services;
 using Vakcina.WPF.Views;
 
 namespace Vakcina.WPF.ViewModels
@@ -15,7 +16,7 @@ namespace Vakcina.WPF.ViewModels
             LogoutCommand = new RelayCommand<Window>(Close);
             SelectedViewModel = new OltasViewModel(Ioc.Default.GetService<OltasRepository>());
             // TODO: 10. Bejelentkezett felhasználónév megjelenítése
-            LoggedUser = "Felhasznaló";
+            LoggedUser = CurrentUser.Name;
         }
 
         private ObservableObject _selectedViewModel;

@@ -1,0 +1,73 @@
+
+ while (!sr.EndOfStream)
+                    {
+                        var sorTomb = sr.ReadLine().Split(';');
+                        var id = Convert.ToInt32(sorTomb[0]);
+                        var felhasznalo_nev = Convert.ToString(sorTomb[1]);
+                        var jelszo = Convert.ToString(sorTomb[2]);
+                        var megjelenitendo_nev = Convert.ToString(sorTomb[3]);
+                        var munkakor = Convert.ToString(sorTomb[4]);
+                        bool admin = false;
+                        bool regisztralt = false;
+
+                        //Nem szép...de működik. Valami hibát dobott a konvertálásra. Így oldottam meg.
+                        if (sorTomb[5] == "1")
+                        {
+                         admin = true;
+                        }
+                        else
+                        {
+                             admin = false;
+                        }
+                        if (sorTomb[6] == "1")
+                        {
+                             regisztralt = true;
+                        }
+                        else
+                        {
+                            regisztralt = false;
+                        }
+                        if (!admin && regisztralt)
+                        {
+                            HibaLista.Add(index);
+                        }
+                        if (felhasznalo_nev == jelszo)
+                        {
+                            jelszoCsereSzukseges.Add(megjelenitendo_nev);
+                        }
+
+                        felhasznaloLista.Add(new Felhasznalo(id,felhasznalo_nev,jelszo,megjelenitendo_nev,munkakor,admin,regisztralt));
+                        index ++;
+                    }
+void HibasanFelvittAdatKeresese()
+            {
+                if (HibaLista.Count == 1)
+                {
+                    Console.Write("Hibásan felvitt adat a következő sorban: ");
+                    for (int i = 0; i < HibaLista.Count; i++)
+                    {
+                            Console.Write((HibaLista[i] + 1) + ".\n");
+                    }
+                }
+                else if (HibaLista.Count > 1)
+                {
+                    Console.Write("Hibásan felvitt adat a következő sorokban: ");
+                    for (int i = 0; i < HibaLista.Count; i++)
+                    {
+                        if (i + 1 == HibaLista.Count)
+                        {
+                            Console.Write((HibaLista[i] + 1) + ".\n");
+                        }
+                        else
+                        {
+                            Console.Write((HibaLista[i] + 1) + ", ");
+                        }
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Nincs hibásan felvitt adat.\n");
+                }
+            }
+
+            HibasanFelvittAdatKeresese();
